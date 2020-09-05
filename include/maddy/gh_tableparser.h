@@ -75,7 +75,7 @@ public:
   AddLine(std::string& line) override
   {
     static std::regex headerRegex("^\\|[^\\n]+\\|$");
-    static std::regex alignRegex("^(\\|:?[-]+:?)+\\|$");
+    static std::regex alignRegex("^(\\| *:? *[-]+ *:? *)+\\|$");
     if (!this->isStarted && std::regex_match(line, headerRegex))
     {
       this->isStarted = true;
