@@ -74,7 +74,7 @@ public:
   static bool
   IsStartingLine(const std::string& line)
   {
-    static std::regex re("^(?:`){3}$");
+    static std::regex re("^(?:`){3}.*$");
     return std::regex_match(line, re);
   }
 
@@ -106,7 +106,7 @@ protected:
   void
   parseBlock(std::string& line) override
   {
-    if (line == "```")
+    if (IsStartingLine(line))
     {
       if (!this->isStarted)
       {
